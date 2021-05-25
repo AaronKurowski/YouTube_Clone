@@ -1,5 +1,5 @@
 import './App.css';
-import youtubeAPIKey from './APIKEY';
+import './APIKEY.js';
 
 function App() {
   return (
