@@ -3,6 +3,7 @@ import axios from 'axios';
 import youtubeAPIKey from './APIKEY';
 import React, { Component } from 'react';
 import VideoPlayer from './components/VideoPlayer/videoPlayer';
+import Search from './components/SearchBar/searchBar.jsx';
 
 class App extends Component {
   state = {
@@ -26,7 +27,9 @@ class App extends Component {
   render(){
     return(
       <div className="App"> 
+      <Search />
         <h1>Welcome to our Youtube Clone!</h1>
+        
         <VideoPlayer video={this.state.selectedVideo} />
       </div> 
     )
