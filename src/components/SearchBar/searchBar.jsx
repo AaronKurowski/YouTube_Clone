@@ -18,26 +18,7 @@ const Search = (props) => {
     }
 
     return(
-<<<<<<< HEAD
         <div className="header">
-=======
-        <div className="mx auto">
-            <div className="row">
-                <div className="col-sm-2 logo-div">
-                    <a href="#">
-                        <img className="yt-logo" src={yt_logo_rgb_light} alt="yt-logo"></img>
-                    </a>
-                </div>
-                <div className="col-sm-8">
-                    <div className="searchBarDiv">
-                        <form onSubmit={(searchTerm) => handleSubmit(searchTerm)}>
-                            <input className="search-input" type="text" value={searchTerm} onChange={event => setSearchTerm(event.target.value)}></input>
-                            <button className="search-button" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
->>>>>>> d33181b0e967f2aadd50ad7dafd47c21449f81b5
-
             <div className="header-left">
                 <MenuIcon />
                 <img className="yt-header-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="yt-logo"></img>
