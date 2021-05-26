@@ -4,27 +4,19 @@ import './searchBar.css';
 
 
 const Search = (props) => {
-
-    const [searchTerm, setSearchTerm] = useState(0)
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        // need to fill out rest of logic here to handle searchterm
-    }
-
-
     return(
         <div className="mx auto">
             <div className="row">
                 <div className="col-sm-2 logo-div">
-                    <img className="yt-logo" src={yt_logo_rgb_light} alt="yt-logo"></img>
+                    <a href="#">
+                        <img className="yt-logo" src={yt_logo_rgb_light} alt="yt-logo"></img>
+                    </a>
                 </div>
                 <div className="col-sm-8">
                     <div className="searchBarDiv">
-                        <form onSubmit={handleSubmit}>
-                            <input className="search-input" type="text"></input>
-                            <button className="search-button" type="submit" value={searchTerm} onChange={event => setSearchTerm(event.target.value)}>Search</button>
+                        <form onSubmit={(searchTerm) => props.handleSubmit(searchTerm)}>
+                            <input className="search-input" type="text" value={props.searchTerm}></input>
+                            <button className="search-button" type="submit">Search</button>
                         </form>
                     </div>
                 </div>

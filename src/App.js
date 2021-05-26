@@ -13,7 +13,7 @@ class App extends Component {
   
   // this will trigger when a user submits a search in the search bar
   handleSubmit = async (searchTerm) => {
-    let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm +"&key=" + youtubeAPIKey;
+    let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm + "&key=" + youtubeAPIKey;
     const result = await axios.get(query)
     this.setState({videoList: result.data.items})
     console.log(this)
@@ -26,16 +26,22 @@ class App extends Component {
 
   render(){
     return(
-      <div className="App"> 
-      <Search />
-        <h1>Welcome to our Youtube Clone!</h1>
-<<<<<<< HEAD
-        
-        <VideoPlayer video={this.state.selectedVideo} />
-=======
-        <VideoPlayer video={this.state.selectedVideoId} />
->>>>>>> 8295bb81798d1a5afa2b56d3d358117ac5bb894d
-      </div> 
+      <div className="App container-fluid"> 
+          <Search handleSearch={this.handleSubmit}/>
+          <h1>Welcome to our Youtube Clone!</h1>
+        <div className="row">
+          <div className="col-md-8">
+            <VideoPlayer video={this.state.selectedVideoId} />
+          </div>
+          <div className="col-md-4">
+            <p>comments will go here</p>
+          </div>
+          
+        </div>
+        <div className="row">
+          <p>Related videos in this row</p>
+        </div>
+      </div>
     )
   }
 }
