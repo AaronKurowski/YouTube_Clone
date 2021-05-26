@@ -6,7 +6,7 @@ import VideoPlayer from './components/VideoPlayer/videoPlayer';
 
 class App extends Component {
   state = {
-    selectedVideo: null,
+    selectedVideoId: "-w-58hQ9dLk",
     videoList: []
   }
   
@@ -27,7 +27,7 @@ class App extends Component {
     return(
       <div className="App"> 
         <h1>Welcome to our Youtube Clone!</h1>
-        <VideoPlayer video={this.state.selectedVideo} />
+        <VideoPlayer video={this.state.selectedVideoId} />
       </div> 
     )
   }
