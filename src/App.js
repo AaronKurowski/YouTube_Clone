@@ -4,6 +4,7 @@ import youtubeAPIKey from './APIKEY';
 import React, { Component } from 'react';
 import VideoPlayer from './components/VideoPlayer/videoPlayer';
 import Search from './components/SearchBar/searchBar.jsx';
+import VideoList from './components/VideoList/videoList';
 
 class App extends Component {
   state = {
@@ -13,10 +14,9 @@ class App extends Component {
   
   // this will trigger when a user submits a search in the search bar
   handleSubmit = async (searchTerm) => {
-    debugger
     console.log(searchTerm)
     try{
-      let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm +"&key=" + youtubeAPIKey;
+      let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm +"&key=" + youtubeAPIKey + "&part=snippet";
       const result = await axios.get(query)
       this.setState({videoList: result.data.items})
       console.log(this)
@@ -37,6 +37,7 @@ class App extends Component {
         <Search handleSubmit={this.handleSubmit}/>
         <h1>Welcome to our Youtube Clone!</h1>
         <VideoPlayer video={this.state.selectedVideo} />
+        <VideoList videos={this.state.videoList}/>
       </div> 
     )
   }
