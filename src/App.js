@@ -7,7 +7,7 @@ import Search from './components/SearchBar/searchBar.jsx';
 
 class App extends Component {
   state = {
-    selectedVideo: null,
+    selectedVideoId: "-w-58hQ9dLk",
     videoList: []
   }
   
@@ -29,8 +29,12 @@ class App extends Component {
       <div className="App"> 
       <Search />
         <h1>Welcome to our Youtube Clone!</h1>
+<<<<<<< HEAD
         
         <VideoPlayer video={this.state.selectedVideo} />
+=======
+        <VideoPlayer video={this.state.selectedVideoId} />
+>>>>>>> 8295bb81798d1a5afa2b56d3d358117ac5bb894d
       </div> 
     )
   }
