@@ -30,10 +30,12 @@ class App extends Component {
   // this will trigger when a user clicks one of the related videos
   handleSelect = (video) => {
     this.setState({selectedVideo: video})
+    console.log(this)
   }
 
   render(){
     return(
+<<<<<<< HEAD
       <div className="App"> 
         <Search handleSubmit={this.handleSubmit}/>
         <h1>Welcome to our Youtube Clone!</h1>
@@ -41,6 +43,21 @@ class App extends Component {
         <VideoList videos={this.state.videoList}/>
       </div> 
     )
+=======
+      <div className="container-fluid"> 
+          <Search handleSearch={this.handleSubmit}/>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <div className="row">
+            <VideoPlayer video={this.state.selectedVideoId} />
+            <Comments />
+          </div>
+          <div className="row">
+            <p>Related videos in this row</p>
+            <VideoList videos={this.state.videoList} selectVideo={this.handleSelect}/>
+          </div>
+      </div>
+    );
+>>>>>>> f17de61d377a5ae1d90f75c0579ce1bfd48c7f1f
   }
 }
 

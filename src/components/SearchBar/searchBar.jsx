@@ -19,7 +19,10 @@ const Search = (props) => {
 
     return(
         <div className="header">
+<<<<<<< HEAD
 
+=======
+>>>>>>> f17de61d377a5ae1d90f75c0579ce1bfd48c7f1f
             <div className="header-left">
                 <MenuIcon />
                 <img className="yt-header-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="yt-logo"></img>
