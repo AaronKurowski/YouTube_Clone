@@ -7,16 +7,23 @@ import Search from './components/SearchBar/searchBar.jsx';
 
 class App extends Component {
   state = {
-    selectedVideoId: "-w-58hQ9dLk",
+    selectedVideo: {},
     videoList: []
   }
   
   // this will trigger when a user submits a search in the search bar
   handleSubmit = async (searchTerm) => {
-    let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm + "&key=" + youtubeAPIKey;
-    const result = await axios.get(query)
-    this.setState({videoList: result.data.items})
-    console.log(this)
+    debugger
+    console.log(searchTerm)
+    try{
+      let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm +"&key=" + youtubeAPIKey;
+      const result = await axios.get(query)
+      this.setState({videoList: result.data.items})
+      console.log(this)
+    }
+    catch (ex){
+      console.log("error getting video: " + ex)
+    }
   }
 
   // this will trigger when a user clicks one of the related videos
@@ -26,22 +33,11 @@ class App extends Component {
 
   render(){
     return(
-      <div className="App container-fluid"> 
-          <Search handleSearch={this.handleSubmit}/>
-          <h1>Welcome to our Youtube Clone!</h1>
-        <div className="row">
-          <div className="col-md-8">
-            <VideoPlayer video={this.state.selectedVideoId} />
-          </div>
-          <div className="col-md-4">
-            <p>comments will go here</p>
-          </div>
-          
-        </div>
-        <div className="row">
-          <p>Related videos in this row</p>
-        </div>
-      </div>
+      <div className="App"> 
+        <Search handleSubmit={this.handleSubmit}/>
+        <h1>Welcome to our Youtube Clone!</h1>
+        <VideoPlayer video={this.state.selectedVideo} />
+      </div> 
     )
   }
 }

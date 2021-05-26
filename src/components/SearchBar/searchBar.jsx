@@ -4,6 +4,14 @@ import './searchBar.css';
 
 
 const Search = (props) => {
+    const [searchTerm, setSearchTerm] = useState("")
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        props.handleSubmit(searchTerm)
+        setSearchTerm("")
+    }
+
     return(
         <div className="mx auto">
             <div className="row">
@@ -14,8 +22,8 @@ const Search = (props) => {
                 </div>
                 <div className="col-sm-8">
                     <div className="searchBarDiv">
-                        <form onSubmit={(searchTerm) => props.handleSubmit(searchTerm)}>
-                            <input className="search-input" type="text" value={props.searchTerm}></input>
+                        <form onSubmit={(searchTerm) => handleSubmit(searchTerm)}>
+                            <input className="search-input" type="text" value={searchTerm} onChange={event => setSearchTerm(event.target.value)}></input>
                             <button className="search-button" type="submit">Search</button>
                         </form>
                     </div>
