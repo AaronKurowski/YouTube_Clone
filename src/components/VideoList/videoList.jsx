@@ -1,16 +1,23 @@
 import React, { useState, useEffect} from 'react';
 
 const VideoList = (props) => {
+    const [selectedVideo, setSelectedVideo] = useState({})
+
+    const handleClick = (event) => {
+        event.preventDefault();
+        props.selectVideo(selectedVideo)
+    }
+
     return (
         <div class="container">
             <div class="row">
                 {props.videos.map((video) => 
                     <div class="card card-cascade wider col-sm" style={{width: 15 + "rem"}}>
                         <div class="view view-cascade overlay">
-                            <img class="card-img-top" src={video.snippet.thumbnails.default.url} alt="Card image cap"/>
-                            <a href="#!">
+                            <button onClick={(video => handleClick(video))}>
+                                <img class="card-img-top" src={video.snippet.thumbnails.default.url} alt="Card image cap"/>
                                 <div class="mask rgba-white-slight"></div>
-                            </a>
+                                </button>
                         </div>
                         <div class="card-body card-body-cascade text-center">
                             <p class="card-title"><strong>{video.snippet.title}</strong></p>

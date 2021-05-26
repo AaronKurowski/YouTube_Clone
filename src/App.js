@@ -29,6 +29,7 @@ class App extends Component {
   // this will trigger when a user clicks one of the related videos
   handleSelect = (video) => {
     this.setState({selectedVideo: video})
+    console.log(this)
   }
 
   render(){
@@ -37,7 +38,7 @@ class App extends Component {
         <Search handleSubmit={this.handleSubmit}/>
         <h1>Welcome to our Youtube Clone!</h1>
         <VideoPlayer video={this.state.selectedVideo} />
-        <VideoList videos={this.state.videoList}/>
+        <VideoList videos={this.state.videoList} selectVideo={this.handleSelect}/>
       </div> 
     )
   }
