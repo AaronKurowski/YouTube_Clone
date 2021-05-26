@@ -1,23 +1,54 @@
-.yt-logo {
-    max-width: 60%;
-    padding-top: 30px;
-    padding-right: 10px;
-    padding-left: 20px;
-
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
 }
 
-.search-input {
-    position: relative;
+.yt-header-logo {
+    height: 20px;
+    object-fit: contain;
+    margin-left: 20px;
+}
+
+.header-input {
+    display: flex;
+    align-items: center;
     width: 40%;
+    border: 1px solid lightgray;
 }
 
-.search-button {
-    height: 30px;
-    width: 8%;
+.header-search-btn {
+    width: 70px !important;
+    background-color: #fafafa;
+    border-left: 1px solid lightgray;
+    color: gray;
+    height: auto;
+    object-fit: contain;
+
 }
 
-.searchBarDiv {
-    text-align: center;
-    padding-left: 5%;
-    padding-top: 20px;
+.header-right {
+    display: flex;
+    align-items: center;
+    margin-right: 25px;
+}
+
+.header-icon {
+    margin-right: 25px;
+}
+
+.header-input > input {
+    flex: 1;
+    border: none;
+}
+
+.srch-btn {
+    display: inherit;
+    background-color: white !important;
+    border: none;
 }

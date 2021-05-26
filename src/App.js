@@ -4,6 +4,7 @@ import youtubeAPIKey from './APIKEY';
 import React, { Component } from 'react';
 import VideoPlayer from './components/VideoPlayer/videoPlayer';
 import Search from './components/SearchBar/searchBar.jsx';
+import Comments from './components/Comments/comments.jsx';
 
 class App extends Component {
   state = {
@@ -13,6 +14,8 @@ class App extends Component {
   
   // this will trigger when a user submits a search in the search bar
   handleSubmit = async (searchTerm) => {
+    console.log(searchTerm);
+    debugger;
     let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm + "&key=" + youtubeAPIKey;
     const result = await axios.get(query)
     this.setState({videoList: result.data.items})
@@ -26,23 +29,50 @@ class App extends Component {
 
   render(){
     return(
-      <div className="App container-fluid"> 
+      <div className=""> 
           <Search handleSearch={this.handleSubmit}/>
           <h1>Welcome to our Youtube Clone!</h1>
-        <div className="row">
-          <div className="col-md-8">
-            <VideoPlayer video={this.state.selectedVideoId} />
-          </div>
-          <div className="col-md-4">
-            <p>comments will go here</p>
-          </div>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
+          <h1>Welcome to our Youtube Clone!</h1>
           
-        </div>
+          <div className="row">
+            {/* <VideoPlayer video={this.state.selectedVideoId} /> */}
+            <Comments />
+          </div>
         <div className="row">
           <p>Related videos in this row</p>
         </div>
       </div>
-    )
+    );
   }
 }
 

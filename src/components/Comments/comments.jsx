@@ -1,10 +1,10 @@
 import React from 'react';
 
-Comments = () => {
+
+const Comments = () => {
     return(
         <div className="col-md-4">
             <p>Comments go here</p>
-
         </div>
     );
 }
