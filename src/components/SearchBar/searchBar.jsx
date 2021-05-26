@@ -18,25 +18,7 @@ const Search = (props) => {
     }
 
     return(
-<<<<<<< HEAD
         <div className="header">
-=======
-        <div className="mx auto">
-            <div className="row">
-                <div className="col-sm-2 logo-div">
-                    <a href="#">
-                        <img className="yt-logo" src={yt_logo_rgb_light} alt="yt-logo"></img>
-                    </a>
-                </div>
-                <div className="col-sm-8">
-                    <div className="searchBarDiv">
-                        <form onSubmit={(searchTerm) => handleSubmit(searchTerm)}>
-                            <input className="search-input" type="text" value={searchTerm} onChange={event => setSearchTerm(event.target.value)}></input>
-                            <button className="search-button" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
->>>>>>> d33181b0e967f2aadd50ad7dafd47c21449f81b5
 
             <div className="header-left">
                 <MenuIcon />
@@ -44,8 +26,10 @@ const Search = (props) => {
             </div>
 
             <div className="header-input">
-                <input placeholder="Search" type="text" />
-                <button className="srch-btn"><SearchIcon className="header-search-btn"/></button>
+                <form>
+                    <input className="" placeholder="Search" type="text" />
+                    <button className="srch-btn"><SearchIcon className="header-search-btn"/></button>
+                </form>
             </div>
 
             <div className="header-right">
@@ -54,7 +38,6 @@ const Search = (props) => {
                 <NotificationsIcon className="header-icon"/>
                 <Avatar alt="avatar" src="https://iconape.com/wp-content/files/gf/155577/svg/155577.svg"/>
             </div>
-
         </div>
     );
 }
