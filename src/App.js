@@ -16,7 +16,7 @@ class App extends Component {
   // this will trigger when a user submits a search in the search bar
   handleSubmit = async (searchTerm) => {
     try{
-      let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm +"&key=" + youtubeAPIKey + "&part=snippet";
+      let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm +"&key=" + youtubeAPIKey + "&part=snippet&type=video";
       const result = await axios.get(query)
       this.setState({videoList: result.data.items})
     }
