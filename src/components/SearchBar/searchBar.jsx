@@ -19,7 +19,6 @@ const Search = (props) => {
 
     return(
         <div className="header">
-
             <div className="header-left">
                 <MenuIcon />
                 <img className="yt-header-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="yt-logo"></img>

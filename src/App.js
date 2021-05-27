@@ -40,7 +40,7 @@ class App extends Component {
           <h1>Welcome to our Youtube Clone!</h1>
           <div className="row">
             <div className="col-md-10">
-              <VideoPlayer video={this.state.selectedVideoId} />
+              <VideoPlayer video={this.state.selectedVideo} />
             </div>
             <div className="col-md-2">
               <Comments />
@@ -48,7 +48,7 @@ class App extends Component {
           </div>
           <div className="row">
             <p>Related videos in this row</p>
-            <VideoList videos={this.state.videoList} selectVideo={this.handleSelect}/>
+            <VideoList videos={this.state.videoList} selectVideo={(video) => this.handleSelect(video)}/>
           </div>
       </div>
     );

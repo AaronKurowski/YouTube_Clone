@@ -1,11 +1,9 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 
 const VideoList = (props) => {
-    const [selectedVideo, setSelectedVideo] = useState({})
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        props.selectVideo(selectedVideo)
+    const handleClick = video => {
+        props.selectVideo(video);
     }
 
     return (
@@ -22,7 +20,6 @@ const VideoList = (props) => {
                         <div className="card-body card-body-cascade text-center">
                             <p className="card-title"><strong>{video.snippet.title}</strong></p>
                         </div>
-                    
                     </div>
                 )}
             </div>
