@@ -22,6 +22,17 @@
     border: 1px solid lightgray;
 }
 
+/* .header-input > form {
+    display: flex;
+    align-items: center;
+    object-fit: contain;
+} */
+
+/* .header-form-input {
+    width: 295px;
+    object-fit: contain;
+} */
+
 .header-search-btn {
     width: 70px !important;
     background-color: #fafafa;
@@ -29,7 +40,6 @@
     color: gray;
     height: auto;
     object-fit: contain;
-
 }
 
 .header-right {

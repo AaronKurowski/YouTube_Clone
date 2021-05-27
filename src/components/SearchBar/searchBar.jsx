@@ -19,14 +19,20 @@ const Search = (props) => {
 
     return(
         <div className="header">
+<<<<<<< HEAD
+
+=======
+>>>>>>> f17de61d377a5ae1d90f75c0579ce1bfd48c7f1f
             <div className="header-left">
                 <MenuIcon />
                 <img className="yt-header-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="yt-logo"></img>
             </div>
 
             <div className="header-input">
-                <input placeholder="Search" type="text" />
-                <button className="srch-btn"><SearchIcon className="header-search-btn"/></button>
+                <form>
+                    <input className="" placeholder="Search" type="text" />
+                    <button className="srch-btn"><SearchIcon className="header-search-btn"/></button>
+                </form>
             </div>
 
             <div className="header-right">
@@ -35,7 +41,6 @@ const Search = (props) => {
                 <NotificationsIcon className="header-icon"/>
                 <Avatar alt="avatar" src="https://iconape.com/wp-content/files/gf/155577/svg/155577.svg"/>
             </div>
-
         </div>
     );
 }
