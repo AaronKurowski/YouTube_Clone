@@ -12,6 +12,7 @@ const Search = (props) => {
     const [searchTerm, setSearchTerm] = useState("")
 
     const handleSubmit = (event) => {
+        debugger
         event.preventDefault();
         props.handleSearch(searchTerm)
         setSearchTerm("")
@@ -26,7 +27,7 @@ const Search = (props) => {
 
             <div className="header-input">
                 <form>
-                    <input className="" placeholder="Search" type="text" />
+                    <input className="" placeholder="Search" type="text" value={searchTerm} onChange={event => setSearchTerm(event.target.value)}/>
                     <button className="srch-btn" onClick={(searchTerm) => handleSubmit(searchTerm)}><SearchIcon className="header-search-btn"/></button>
                 </form>
             </div>
