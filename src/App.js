@@ -15,6 +15,7 @@ class App extends Component {
   
   // this will trigger when a user submits a search in the search bar
   handleSubmit = async (searchTerm) => {
+    console.log(this)
     try{
       let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm +"&key=" + youtubeAPIKey + "&part=snippet&type=video";
       const result = await axios.get(query)
