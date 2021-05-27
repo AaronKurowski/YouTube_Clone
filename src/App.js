@@ -39,8 +39,13 @@ class App extends Component {
           <Search handleSearch={this.handleSubmit}/>
           <h1>Welcome to our Youtube Clone!</h1>
           <div className="row">
-            <VideoPlayer video={this.state.selectedVideoId} />
-            <Comments />
+            <div className="col-md-10">
+              <VideoPlayer video={this.state.selectedVideoId} />
+            </div>
+            <div className="col-md-2">
+              <Comments />
+            </div>
+           
           </div>
           <div className="row">
             <p>Related videos in this row</p>
