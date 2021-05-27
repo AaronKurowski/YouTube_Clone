@@ -35,15 +35,6 @@ class App extends Component {
 
   render(){
     return(
-<<<<<<< HEAD
-      <div className="App"> 
-        <Search handleSubmit={this.handleSubmit}/>
-        <h1>Welcome to our Youtube Clone!</h1>
-        <VideoPlayer video={this.state.selectedVideo} />
-        <VideoList videos={this.state.videoList}/>
-      </div> 
-    )
-=======
       <div className="container-fluid"> 
           <Search handleSearch={this.handleSubmit}/>
           <h1>Welcome to our Youtube Clone!</h1>
@@ -58,11 +49,10 @@ class App extends Component {
           </div>
           <div className="row">
             <p>Related videos in this row</p>
-            <VideoList videos={this.state.videoList} selectVideo={this.handleSelect}/>
+            <VideoList videos={this.state.videoList} selectVideo={(video) => this.handleSelect(video)}/>
           </div>
       </div>
     );
->>>>>>> f17de61d377a5ae1d90f75c0579ce1bfd48c7f1f
   }
 }
 

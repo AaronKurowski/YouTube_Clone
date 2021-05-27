@@ -13,16 +13,12 @@ const Search = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        props.handleSubmit(searchTerm)
+        props.handleSearch(searchTerm)
         setSearchTerm("")
     }
 
     return(
         <div className="header">
-<<<<<<< HEAD
-
-=======
->>>>>>> f17de61d377a5ae1d90f75c0579ce1bfd48c7f1f
             <div className="header-left">
                 <MenuIcon />
                 <img className="yt-header-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="yt-logo"></img>
@@ -31,7 +27,7 @@ const Search = (props) => {
             <div className="header-input">
                 <form>
                     <input className="" placeholder="Search" type="text" />
-                    <button className="srch-btn"><SearchIcon className="header-search-btn"/></button>
+                    <button className="srch-btn" onClick={(searchTerm) => handleSubmit(searchTerm)}><SearchIcon className="header-search-btn"/></button>
                 </form>
             </div>
 
