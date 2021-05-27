@@ -15,12 +15,10 @@ class App extends Component {
   
   // this will trigger when a user submits a search in the search bar
   handleSubmit = async (searchTerm) => {
-    console.log(searchTerm)
     try{
       let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm +"&key=" + youtubeAPIKey + "&part=snippet";
       const result = await axios.get(query)
       this.setState({videoList: result.data.items})
-      console.log(this)
     }
     catch (ex){
       console.log("error getting video: " + ex)
@@ -30,7 +28,6 @@ class App extends Component {
   // this will trigger when a user clicks one of the related videos
   handleSelect = (video) => {
     this.setState({selectedVideo: video})
-    console.log(this)
   }
 
   render(){
@@ -45,7 +42,6 @@ class App extends Component {
             <div className="col-md-2">
               <Comments />
             </div>
-           
           </div>
           <div className="row">
             <p>Related videos in this row</p>

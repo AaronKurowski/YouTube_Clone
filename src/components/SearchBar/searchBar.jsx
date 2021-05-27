@@ -12,7 +12,6 @@ const Search = (props) => {
     const [searchTerm, setSearchTerm] = useState("")
 
     const handleSubmit = (event) => {
-        debugger
         event.preventDefault();
         props.handleSearch(searchTerm)
         setSearchTerm("")
