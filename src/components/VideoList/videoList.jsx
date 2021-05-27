@@ -23,7 +23,6 @@ const VideoList = (props) => {
                     </div>
                 )}
             </div>
-            
         </div>
     )
 }

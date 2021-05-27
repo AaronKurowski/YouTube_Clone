@@ -25,16 +25,16 @@ const Search = (props) => {
             </div>
 
             <div className="header-input">
-                <form>
-                    <input className="" placeholder="Search" type="text" value={searchTerm} onChange={event => setSearchTerm(event.target.value)}/>
-                    <button className="srch-btn" onClick={(searchTerm) => handleSubmit(searchTerm)}><SearchIcon className="header-search-btn"/></button>
+                <form onSubmit={event => handleSubmit(event)}>
+                    <input onChange={event => setSearchTerm(event.target.value)} value={searchTerm} placeholder="Search" type="text" />
+                    <button><SearchIcon className="header-search-btn"/></button>
                 </form>
             </div>
 
             <div className="header-right">
-                <VideoCallIcon className="header-icon"/>
-                <AppsIcon className="header-icon"/>
-                <NotificationsIcon className="header-icon"/>
+                <VideoCallIcon className="header-right-icons"/>
+                <AppsIcon className="header-right-icons"/>
+                <NotificationsIcon className="header-right-icons"/>
                 <Avatar alt="avatar" src="https://iconape.com/wp-content/files/gf/155577/svg/155577.svg"/>
             </div>
         </div>
