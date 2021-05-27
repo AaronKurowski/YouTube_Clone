@@ -6,6 +6,8 @@ import VideoPlayer from './components/VideoPlayer/videoPlayer';
 import Search from './components/SearchBar/searchBar.jsx';
 import Comments from './components/Comments/comments.jsx';
 import VideoList from './components/VideoList/videoList';
+import CommentForm from './components/Comments/commentForm.jsx';
+import './components/Comments/commentForm.css';
 
 class App extends Component {
   state = {
@@ -35,12 +37,13 @@ class App extends Component {
       <div className="container-fluid"> 
           <Search handleSearch={this.handleSubmit}/>
           <h1>Welcome to our Youtube Clone!</h1>
-          <div className="row">
-            <div className="col-md-10">
+          <div className="row justify-content-evenly">
+            <div className=""></div>
+            <div className="col-sm-6">
               <VideoPlayer video={this.state.selectedVideo} />
             </div>
-            <div className="col-md-2">
-              <Comments />
+            <div className="col-sm-4 comment-div">
+              <CommentForm />
             </div>
           </div>
           <div className="row">

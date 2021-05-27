@@ -1,4 +1,5 @@
 .vid-frame {
     margin-left: 100px;
+    justify-content: right;
     border: 2px solid black;
 }

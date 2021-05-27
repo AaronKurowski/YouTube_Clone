@@ -1,0 +1,33 @@
+.comment-form {
+    padding-left: 20px;
+    height: 100px;
+}
+
+.comment-form > form {
+    display: flex;
+    align-items: center;
+}
+
+.comment-frame {
+    padding: 5px;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.comment-header {
+    text-align: center;
+}
+
+.comment-div {
+    border: 1px solid black;
+    height:fit-content;
+    width: fit-content;
+    overflow-y: scroll;
+    height: 420px;
+}
+
+.comment {
+    text-align: left;
+    border-bottom: 1px solid black;
+    padding-top: 5px;
+}

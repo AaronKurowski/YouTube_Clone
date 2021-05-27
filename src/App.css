@@ -20,3 +20,10 @@
 body {
   background: #282c34;
 } */
+
+.vidplayer-div {
+  border: 3px solid black;
+  padding: 20px;
+  padding-right: 20px;
+  overflow-y: scroll;
+}
