@@ -22,24 +22,20 @@
     border: 1px solid lightgray;
 }
 
-/* .header-input > form {
-    display: flex;
-    align-items: center;
-    object-fit: contain;
-} */
-
-/* .header-form-input {
-    width: 295px;
-    object-fit: contain;
-} */
-
 .header-search-btn {
     width: 70px !important;
     background-color: #fafafa;
     border-left: 1px solid lightgray;
     color: gray;
     height: auto;
-    object-fit: contain;
+    object-fit:contain;
+    justify-content: right;
+}
+
+.header-input > input {
+    flex: 1;
+    border: none;
+    width: 1000px;
 }
 
 .header-right {
@@ -48,17 +44,12 @@
     margin-right: 25px;
 }
 
-.header-icon {
+.header-right-icons {
     margin-right: 25px;
 }
 
-.header-input > input {
+form {
     flex: 1;
-    border: none;
+    display: flex;
 }
 
-.srch-btn {
-    display: inherit;
-    background-color: white !important;
-    border: none;
-}
