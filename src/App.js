@@ -53,6 +53,10 @@ class App extends Component {
     this.setState({currentVideoComments: currentComments});
   }
 
+  updateComments(comment){
+    this.setState({currentVideoComments: [...this.state.currentVideoComments, comment]});
+  }
+
   render(){
     return(
       <div className="container-fluid"> 
@@ -60,12 +64,12 @@ class App extends Component {
           <h1>Welcome to our Youtube Clone!</h1>
           <div className="content-body">
 
-            <VideoPlayer video={this.state.selectedVideo} />
-
-            <div className="comment-outer-div">
-              <CommentForm />
+            <div>
+              <VideoPlayer video={this.state.selectedVideo} />
             </div>
-
+            <div className="comment-outer-div">
+              <CommentForm comments={this.state.currentVideoComments} updateComments={(newComment) => this.updateComments(newComment)}/>
+            </div>
           </div>
           
           <div className="vid-list">

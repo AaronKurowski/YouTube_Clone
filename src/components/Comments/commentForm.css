@@ -45,3 +45,7 @@
 .single-comment {
     padding: 5px;
 }
+
+span.weak {
+    font-weight: lighter;
+}
