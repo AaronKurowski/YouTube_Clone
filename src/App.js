@@ -38,14 +38,16 @@ class App extends Component {
       <div className="container-fluid"> 
           <Search handleSearch={this.handleSubmit}/>
           <h1>Welcome to our Youtube Clone!</h1>
-          <div className="row justify-content-evenly">
-            <div className=""></div>
-            <div className="col-sm-6">
+          <div className="content-body">
+
+            <div>
               <VideoPlayer video={this.state.selectedVideo} />
             </div>
-            <div className="col-sm-4 comment-div">
+
+            <div className="comment-outer-div">
               <CommentForm />
             </div>
+
           </div>
           <div className="row">
             <p>Related videos in this row</p>

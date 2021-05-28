@@ -31,3 +31,17 @@
     border-bottom: 1px solid black;
     padding-top: 5px;
 }
+
+
+.comment-form {
+    justify-content: center;
+  }
+
+.comments {
+    text-align: center;
+    padding: 5px;
+}
+
+.single-comment {
+    padding: 5px;
+}
