@@ -10,9 +10,23 @@ import CommentForm from './components/Comments/commentForm.jsx';
 import './components/Comments/commentForm.css';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.getComments();
+    console.log(this);
+  }
+
   state = {
     selectedVideo: {},
-    videoList: []
+    videoList: [],
+    comments: [],
+    currentVideoComments: []
+  }
+
+  getComments = async () => {
+    let query = "http://127.0.0.1:8000/comments/"
+    let comments = await axios.get(query)
+    this.setState({comments: comments.data})
   }
   
   // this will trigger when a user submits a search in the search bar
@@ -30,7 +44,16 @@ class App extends Component {
 
   // this will trigger when a user clicks one of the related videos
   handleSelect = (video) => {
-    this.setState({selectedVideo: video})
+    this.setState({selectedVideo: video}, this.getSpecificComments);
+  }
+
+  getSpecificComments(){
+    let currentComments = this.state.comments.filter((comment) => {
+      return comment.video_id === this.state.selectedVideo.id.videoId;
+    })
+    this.setState({currentVideoComments: currentComments});
+    console.log(this)
+    
   }
 
   render(){
@@ -44,7 +67,7 @@ class App extends Component {
               <VideoPlayer video={this.state.selectedVideo} />
             </div>
             <div className="col-sm-4 comment-div">
-              <CommentForm />
+              <CommentForm comments={this.state.comments}/>
             </div>
           </div>
           <div className="row">
