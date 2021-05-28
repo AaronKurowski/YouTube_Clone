@@ -44,7 +44,6 @@ class App extends Component {
   handleSelect = (video) => {
     this.setState({selectedVideo: video}, this.getSpecificComments);
     this.handleSubmit(video.snippet.title);
-    console.log(this)
   }
 
   getSpecificComments(){
@@ -52,6 +51,10 @@ class App extends Component {
       return comment.video_id === this.state.selectedVideo.id.videoId;
     })
     this.setState({currentVideoComments: currentComments});
+  }
+
+  updateComments(comment){
+    this.setState({currentVideoComments: [...this.state.currentVideoComments, comment]});
   }
 
   render(){
@@ -65,7 +68,7 @@ class App extends Component {
               <VideoPlayer video={this.state.selectedVideo} />
             </div>
             <div className="comment-outer-div">
-              <CommentForm comments={this.state.currentVideoComments}/>
+              <CommentForm comments={this.state.currentVideoComments} updateComments={(newComment) => this.updateComments(newComment)}/>
             </div>
           </div>
           

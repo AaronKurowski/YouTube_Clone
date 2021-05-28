@@ -3,7 +3,7 @@ import axios from 'axios';
 import './commentForm.css';
 
 const CommentForm = (props) => {
-    const [commentText, setCommentText] = useState("")
+    const [commentText, setCommentText] = useState("");
 
     const getTodaysDate = () => {
         let today = new Date();
@@ -29,6 +29,8 @@ const CommentForm = (props) => {
         console.log(newComment)
         try{
             const result = await axios.post('http://127.0.0.1:8000/comments/', newComment)
+            props.updateComments(newComment)
+            setCommentText("");
         }
         catch (ex) {
             console.log("error adding comment: " + ex);
