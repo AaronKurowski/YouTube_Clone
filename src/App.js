@@ -60,24 +60,16 @@ class App extends Component {
           <h1>Welcome to our Youtube Clone!</h1>
           <div className="content-body">
 
-            <div>
-              <VideoPlayer video={this.state.selectedVideo} />
-            </div>
-<<<<<<< HEAD
+            <VideoPlayer video={this.state.selectedVideo} />
 
             <div className="comment-outer-div">
               <CommentForm />
-=======
-            <div className="col-sm-4 comment-div">
-              <CommentForm comments={this.state.comments}/>
->>>>>>> 0354ee2a0bb6f474e5acb0c56c058e81a3d1ebc0
             </div>
 
           </div>
-          <div className="row">
-            <p>Related videos in this row</p>
-            <VideoList videos={this.state.videoList} selectVideo={(video) => this.handleSelect(video)}/>
-          </div>
+          
+          <VideoList videos={this.state.videoList} selectVideo={(video) => this.handleSelect(video)}/>
+          
       </div>
     );
   }

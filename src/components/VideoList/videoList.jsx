@@ -7,7 +7,6 @@ const VideoList = (props) => {
     }
 
     return (
-        <div className="container">
             <div className="row">
                 {props.videos.map((video) => 
                     <div className="card card-cascade wider col-sm">
@@ -23,7 +22,6 @@ const VideoList = (props) => {
                     </div>
                 )}
             </div>
-        </div>
     )
 }
 
