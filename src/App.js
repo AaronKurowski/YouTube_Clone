@@ -13,7 +13,6 @@ class App extends Component {
   constructor(props){
     super(props);
     this.getComments();
-    console.log(this);
   }
 
   state = {
@@ -31,7 +30,6 @@ class App extends Component {
   
   // this will trigger when a user submits a search in the search bar
   handleSubmit = async (searchTerm) => {
-    console.log(this)
     try{
       let query = "https://www.googleapis.com/youtube/v3/search?q=" + searchTerm +"&key=" + youtubeAPIKey + "&part=snippet&type=video";
       const result = await axios.get(query)
@@ -45,6 +43,7 @@ class App extends Component {
   // this will trigger when a user clicks one of the related videos
   handleSelect = (video) => {
     this.setState({selectedVideo: video}, this.getSpecificComments);
+    this.handleSubmit(video.snippet.title);
   }
 
   getSpecificComments(){
@@ -52,8 +51,6 @@ class App extends Component {
       return comment.video_id === this.state.selectedVideo.id.videoId;
     })
     this.setState({currentVideoComments: currentComments});
-    console.log(this)
-    
   }
 
   render(){
