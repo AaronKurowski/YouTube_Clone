@@ -68,10 +68,9 @@ class App extends Component {
               <CommentForm comments={this.state.currentVideoComments}/>
             </div>
           </div>
-          <div className="row">
-            <p>Related videos in this row</p>
-            <VideoList videos={this.state.videoList} selectVideo={(video) => this.handleSelect(video)}/>
-          </div>
+          
+          <VideoList videos={this.state.videoList} selectVideo={(video) => this.handleSelect(video)}/>
+          
       </div>
     );
   }

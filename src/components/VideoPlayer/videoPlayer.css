@@ -1,5 +1,12 @@
 .vid-frame {
-    margin-left: 100px;
-    justify-content: right;
-    border: 2px solid black;
+    margin-right: 20px;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.video-details {
+    
 }

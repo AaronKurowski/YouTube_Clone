@@ -6,7 +6,7 @@ const VideoPlayer = (props) => {
     try{
         let url = "https://www.youtube.com/embed/" + props.video.id.videoId 
         return (
-            <div>
+            <div className="video-content">
                 <iframe className="vid-frame" id="ytplayer" type="text/html" width="640" height="360" src={url} frameBorder="0"></iframe>
                 <div className="row">
                     <div className="col-md-1"></div>
@@ -21,8 +21,9 @@ const VideoPlayer = (props) => {
     catch{
         let url = "https://www.youtube.com/embed/" + "-w-58hQ9dLk" 
         return (
-            <div>
+            <div className="video-content">
                 <iframe className="vid-frame" id="ytplayer" type="text/html" width="640" height="360" src={url} frameBorder="0"></iframe>
+
                 <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-md-8">
