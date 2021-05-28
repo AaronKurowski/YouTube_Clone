@@ -7,7 +7,8 @@ const VideoList = (props) => {
     }
 
     return (
-            <div className="row">
+            <div className="row vid-list">
+                <h2>Related Videos:</h2>
                 {props.videos.map((video) => 
                     <div className="card card-cascade wider col-sm">
                         <div className="view view-cascade overlay">

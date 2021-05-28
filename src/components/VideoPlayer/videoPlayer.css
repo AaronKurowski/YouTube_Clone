@@ -8,5 +8,10 @@
 }
 
 .video-details {
-    
+    padding-left: 5%;
+}
+
+.video-details-container {
+    max-height: 200px;
+    overflow-y: scroll;
 }

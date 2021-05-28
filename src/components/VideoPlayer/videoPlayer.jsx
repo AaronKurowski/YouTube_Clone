@@ -23,12 +23,13 @@ const VideoPlayer = (props) => {
         return (
             <div className="video-content">
                 <iframe className="vid-frame" id="ytplayer" type="text/html" width="640" height="360" src={url} frameBorder="0"></iframe>
-
-                <div className="row">
-                    <div className="col-md-1"></div>
-                    <div className="col-md-8">
-                        <h3>Jurassic Park Theme Song (Melodica Cover)</h3>
-                        <p>Just got a melodica. Here's my rendition of the Jurassic Park theme song. What do you think?</p>
+                <div className="video-details-container">
+                    <div className="video-details">
+                        <h3>Juriassic Park Theme Song (Melodica Cover)</h3>
+                        <br/>
+                        <h6>Description:</h6>
+                        <p>Just got a melodica. Here's my rendition of the Jurassic Park theme song. What do you think?
+                        </p>
                     </div>
                 </div>
             </div>

@@ -68,8 +68,9 @@ class App extends Component {
 
           </div>
           
-          <VideoList videos={this.state.videoList} selectVideo={(video) => this.handleSelect(video)}/>
-          
+          <div className="vid-list">
+            <VideoList videos={this.state.videoList} selectVideo={(video) => this.handleSelect(video)}/>
+          </div>
       </div>
     );
   }
