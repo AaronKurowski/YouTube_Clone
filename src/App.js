@@ -44,6 +44,7 @@ class App extends Component {
   handleSelect = (video) => {
     this.setState({selectedVideo: video}, this.getSpecificComments);
     this.handleSubmit(video.snippet.title);
+    console.log(this)
   }
 
   getSpecificComments(){
@@ -63,16 +64,9 @@ class App extends Component {
             <div>
               <VideoPlayer video={this.state.selectedVideo} />
             </div>
-<<<<<<< HEAD
-
             <div className="comment-outer-div">
-              <CommentForm />
-=======
-            <div className="col-sm-4 comment-div">
-              <CommentForm comments={this.state.comments}/>
->>>>>>> 0354ee2a0bb6f474e5acb0c56c058e81a3d1ebc0
+              <CommentForm comments={this.state.currentVideoComments}/>
             </div>
-
           </div>
           <div className="row">
             <p>Related videos in this row</p>
