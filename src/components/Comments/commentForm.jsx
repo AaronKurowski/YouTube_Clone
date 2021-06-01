@@ -22,10 +22,11 @@ const CommentForm = (props) => {
     }
 
     const handleSubmit = async (event) => {
+        console.log(props.video)
         event.preventDefault();
         newComment.content = commentText;
         newComment.date = getTodaysDate();
-        newComment.video_id = props.comments[0].video_id;
+        newComment.video_id = props.video.id.videoId;
         console.log(newComment)
         try{
             const result = await axios.post('http://127.0.0.1:8000/comments/', newComment)
@@ -46,6 +47,24 @@ const CommentForm = (props) => {
         }
     }
 
+    const addLike = async (event, comment) => {
+        try{
+            const result = await axios.put('http://127.0.0.1:8000/comments/' + comment.id + '?like=1');
+        }
+        catch (ex) {
+            console.log("error liking comment: " + ex);
+        }
+    }
+
+    const addDislike = async (event, comment) => {
+        try{
+            const result = await axios.put('http://127.0.0.1:8000/comments/' + comment.id + '?dislike=1');
+        }
+        catch (ex) {
+            console.log("error disliking comment: " + ex);
+        }
+    }
+
     return(
         <div>
             <div className="comment-form">
@@ -56,13 +75,20 @@ const CommentForm = (props) => {
                 </form>
             </div>
             {props.comments.map((comment) => 
-                <div className="comments">
+                <div className="comments" id={comment.id}>
                     <div className="single-comment" id={comment.id}>
                         {hasReplies(comment)}
                         <br/>
                         <p><strong>{comment.content}</strong></p>
                     </div>
+                    <div className="col" id={comment.id}>
+                        <p>{comment.like_count}
+                        <button onClick={(e) => addLike(e, comment)}>like</button>
+                        <button onClick={(e) => addDislike(e, comment)}>dislike</button> </p>
+                    </div>
+                    
                 </div>
+                
             )}
             
         </div>

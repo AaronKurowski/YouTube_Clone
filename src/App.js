@@ -70,7 +70,7 @@ class App extends Component {
             <VideoPlayer video={this.state.selectedVideo} />
             
             <div className="comment-outer-div">
-              <CommentForm comments={this.state.currentVideoComments} updateComments={(newComment) => this.updateComments(newComment)}/>
+              <CommentForm video={this.state.selectedVideo} comments={this.state.currentVideoComments} updateComments={(newComment) => this.updateComments(newComment)}/>
             </div>
           </div>
           <div className="vid-list">
