@@ -23,19 +23,29 @@
 }
 
 .header-search-btn {
-    width: 70px !important;
-    background-color: #fafafa;
-    border-left: 1px solid lightgray;
+    /* width: 70px !important; */
+    /* background-color: #fafafa; */
+    /* border-left: 1px solid lightgray; */
     color: gray;
     height: auto;
     object-fit:contain;
-    justify-content: right;
+    /* justify-content: right; */
+
+    width: 100%;
 }
 
-.header-input > input {
+.header-input > form > button {
+    background-color: whitesmoke;
+    border: none;
+    cursor: pointer;
+    width: 69px;
+    border-left: 1px solid lightgray;
+}
+
+.header-input > form > input {
     flex: 1;
     border: none;
-    width: 1000px;
+    width: 100%;
 }
 
 .header-right {
