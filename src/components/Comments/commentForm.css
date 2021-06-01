@@ -34,7 +34,14 @@
 
 .comment-form {
     justify-content: center;
+    display:block;
+    width: 100%;
   }
+
+.comment-form > form > input {
+    object-fit: inherit;
+    width: 100%;
+}
 
 .comments {
     text-align: center;
