@@ -10,14 +10,12 @@ const CommentForm = (props) => {
     const [modalOriginalComment, setModalOriginalComment] = useState("");
 
     const toggleModal = (event, comment) => {
-        debugger
         setModalOriginalComment(comment.content);
         setModalState(!modalState);
     }
 
     const modalOpenAndClose = (event, comment) => {
         console.log(comment)
-        debugger
         event.preventDefault();
         toggleModal();
         newComment.content = comment.content;
