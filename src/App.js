@@ -12,7 +12,9 @@ import './components/Comments/commentForm.css';
 class App extends Component {
   constructor(props){
     super(props);
+    debugger;
     this.getComments();
+    debugger;
   }
 
   state = {
@@ -26,6 +28,7 @@ class App extends Component {
     let query = "http://127.0.0.1:8000/comments/"
     let comments = await axios.get(query)
     this.setState({comments: comments.data})
+    debugger;
   }
   
   // this will trigger when a user submits a search in the search bar
@@ -70,7 +73,6 @@ class App extends Component {
               <CommentForm comments={this.state.currentVideoComments} updateComments={(newComment) => this.updateComments(newComment)}/>
             </div>
           </div>
-          
           <div className="vid-list">
             <VideoList videos={this.state.videoList} selectVideo={(video) => this.handleSelect(video)}/>
           </div>

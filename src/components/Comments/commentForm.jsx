@@ -42,7 +42,7 @@ const CommentForm = (props) => {
             return <span className="weak">reply to {comment.replies.slice(0, 25)}...</span>
         }
         else{
-            return 
+            return
         }
     }
 
