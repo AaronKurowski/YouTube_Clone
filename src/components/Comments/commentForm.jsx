@@ -6,6 +6,7 @@ import {Button, Modal} from 'react-bootstrap';
 const CommentForm = (props) => {
     const [commentText, setCommentText] = useState("");
     const [modalState, setModalState] = useState(false);
+    const [reply, setReply] = useState("");
     const toggleModal = () => setModalState(!modalState);
 
     const getTodaysDate = () => {
@@ -16,6 +17,7 @@ const CommentForm = (props) => {
         today = yyyy + '-' + mm + '-' + dd;
         return today;
     }
+
     const newComment = {
         "date": {getTodaysDate},
         "like_count": 0,
@@ -23,6 +25,8 @@ const CommentForm = (props) => {
         "replies": "",
         "video_id": ""
     }
+
+
 
     const handleSubmit = async (event) => {
         console.log(props.video)
@@ -43,6 +47,26 @@ const CommentForm = (props) => {
         }
     }
 
+    const replySubmit = async (event, comment) => {
+        event.preventDefault();
+        comment.replies = reply;
+        setReply("");
+        // newComment.content = commentText;
+        // newComment.date = getTodaysDate();
+        // newComment.replies = reply;
+        debugger;
+        console.log(comment);
+        debugger;
+        try{
+            const reply = await axios.put(`http://127.0.0.1:8000/comments/${props.video.id.videoId}`, comment)
+            debugger;
+            console.log(reply);
+        }
+        catch(ex){
+            console.log(`Error: ${ex}`)
+        }
+    }
+
     const hasReplies = (comment) => {
         if (comment.replies != null && comment.replies != ""){
             return <span className="weak">replies to "{comment.content.slice(0, 25)}"...</span>
@@ -55,6 +79,7 @@ const CommentForm = (props) => {
     const addLike = async (event, comment) => {
         try{
             const result = await axios.put('http://127.0.0.1:8000/comments/' + comment.id + '?like=1');
+
         }
         catch (ex) {
             console.log("error liking comment: " + ex);
@@ -96,11 +121,11 @@ const CommentForm = (props) => {
                     <Modal show={modalState} onHide={() => toggleModal}>
                         <Modal.Header>Reply</Modal.Header>
                         <Modal.Body>
-                            <form>
+                            <form id={comment.id} onSubmit={event => replySubmit(event, comment)}>
                                 <label for="reply">Reply here:</label>
-                                <input type="text" name="reply" id="reply" />
+                                <input onChange={event => setReply(event.target.value)} type="text" name="reply" id="reply" value={reply} />
 
-                                <button type="submit" value="Post">Post</button>
+                                <button type="submit" value="Post" id={comment.id}>Post</button>
                             </form>
                         </Modal.Body>
                         <Modal.Footer>
@@ -111,7 +136,6 @@ const CommentForm = (props) => {
                     </Modal>
                 </div>
                 </div>
-                
             )}
             
         </div>
