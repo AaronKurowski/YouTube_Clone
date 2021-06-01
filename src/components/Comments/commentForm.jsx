@@ -1,9 +1,12 @@
 import React, {useState}  from 'react';
 import axios from 'axios';
 import './commentForm.css';
+import {Button, Modal} from 'react-bootstrap';
 
 const CommentForm = (props) => {
     const [commentText, setCommentText] = useState("");
+    const [modalState, setModalState] = useState(false);
+    const toggleModal = () => setModalState(!modalState);
 
     const getTodaysDate = () => {
         let today = new Date();
@@ -81,15 +84,29 @@ const CommentForm = (props) => {
                     <div className="comment-content">
                     <div className="col comment-col" id={comment.id}>
                         <div className="likes">Likes: {comment.like_count}</div>
-                        <button className="button" onClick={(e) => addLike(e, comment)}>like</button>
-                        <button className="button" onClick={(e) => addDislike(e, comment)}>dislike</button> 
-
+                        <button className="button" onClick={(e) => addLike(e, comment)}>Like</button>
+                        <button className="button" onClick={(e) => addDislike(e, comment)}>Dislike</button> 
                     </div>
                     <div className="single-comment" id={comment.id}>
                         {hasReplies(comment)}
                         <br/>
                         <p><strong>{comment.content}</strong></p>
                     </div>
+                    <Button onClick={toggleModal}>Add Reply</Button>
+                    <Modal show={modalState} onHide={() => toggleModal}>
+                        <Modal.Header>Reply</Modal.Header>
+                        <Modal.Body>
+                            <form>
+                                <label for="reply">Reply here:</label>
+                                <input type="text" name="reply" id="reply" />
+
+                                <button type="submit" value="Post">Post</button>
+                            </form>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={toggleModal}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
                 </div>
                 

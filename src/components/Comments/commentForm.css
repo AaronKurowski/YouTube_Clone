@@ -70,13 +70,13 @@ span.weak {
     text-align: center;
 }
 
-.comment-col {
+/* .comment-col {
     text-align: center;
     margin-top: 5px;
     margin-right: 25%;
     margin-left: 25%;
     border-bottom: 1px solid black;
-}
+} */
 
 .comment-inner-div {
     display: inline;
