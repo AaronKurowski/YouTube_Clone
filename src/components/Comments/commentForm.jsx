@@ -6,7 +6,25 @@ import {Button, Modal} from 'react-bootstrap';
 const CommentForm = (props) => {
     const [commentText, setCommentText] = useState("");
     const [modalState, setModalState] = useState(false);
-    const toggleModal = () => setModalState(!modalState);
+    const [replyText, setReplyText] = useState("");
+    const [modalOriginalComment, setModalOriginalComment] = useState("");
+
+    const toggleModal = (event, comment) => {
+        debugger
+        setModalOriginalComment(comment.content);
+        setModalState(!modalState);
+    }
+
+    const modalOpenAndClose = (event, comment) => {
+        console.log(comment)
+        debugger
+        event.preventDefault();
+        toggleModal();
+        newComment.content = comment.content;
+        setCommentText(replyText);
+        handleSubmit(event);
+    }
+    
 
     const getTodaysDate = () => {
         let today = new Date();
@@ -27,11 +45,11 @@ const CommentForm = (props) => {
     const handleSubmit = async (event) => {
         console.log(props.video)
         console.log(props.comments)
-        debugger;
         event.preventDefault();
         newComment.content = commentText;
         newComment.date = getTodaysDate();
         newComment.video_id = props.video.id.videoId;
+        newComment.replies = replyText;
         console.log(newComment)
         try{
             const result = await axios.post('http://127.0.0.1:8000/comments/', newComment)
@@ -45,7 +63,7 @@ const CommentForm = (props) => {
 
     const hasReplies = (comment) => {
         if (comment.replies != null && comment.replies != ""){
-            return <span className="weak">reply to {comment.replies.slice(0, 25)}...</span>
+            return <span className="weak">reply to {comment.content.slice(0, 25)}...</span>
         }
         else{
             return
@@ -92,15 +110,14 @@ const CommentForm = (props) => {
                         <br/>
                         <p><strong>{comment.content}</strong></p>
                     </div>
-                    <Button onClick={toggleModal}>Add Reply</Button>
+                    <Button onClick={(event) => toggleModal(event, comment)}>Add Reply</Button>
                     <Modal show={modalState} onHide={() => toggleModal}>
                         <Modal.Header>Reply</Modal.Header>
                         <Modal.Body>
-                            <form>
+                            <form onSubmit={(event) => modalOpenAndClose(event, comment)}>
                                 <label for="reply">Reply here:</label>
-                                <input type="text" name="reply" id="reply" />
-
-                                <button type="submit" value="Post">Post</button>
+                                <input type="text" name="reply" id={comment.id} onChange={event => setReplyText(event.target.value)} value={replyText}/>
+                                <button type="submit" value="Post" id={comment.id} >Post</button>
                             </form>
                         </Modal.Body>
                         <Modal.Footer>

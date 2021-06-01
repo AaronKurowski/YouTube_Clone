@@ -12,9 +12,7 @@ import './components/Comments/commentForm.css';
 class App extends Component {
   constructor(props){
     super(props);
-    debugger;
     this.getComments();
-    debugger;
   }
 
   state = {
@@ -30,7 +28,6 @@ class App extends Component {
     let comments = await axios.get(query)
     this.setState({comments: comments.data})
     console.log(this.state.comments);
-    debugger;
   }
   
   // this will trigger when a user submits a search in the search bar
