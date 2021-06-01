@@ -45,7 +45,7 @@ const CommentForm = (props) => {
 
     const hasReplies = (comment) => {
         if (comment.replies != null && comment.replies != ""){
-            return <span className="weak">reply to {comment.replies.slice(0, 25)}...</span>
+            return <span className="weak">replies to "{comment.content.slice(0, 25)}"...</span>
         }
         else{
             return
@@ -88,9 +88,9 @@ const CommentForm = (props) => {
                         <button className="button" onClick={(e) => addDislike(e, comment)}>Dislike</button> 
                     </div>
                     <div className="single-comment" id={comment.id}>
-                        {hasReplies(comment)}
-                        <br/>
                         <p><strong>{comment.content}</strong></p>
+                        {hasReplies(comment)}
+                        <p>{comment.replies}</p>
                     </div>
                     <Button onClick={toggleModal}>Add Reply</Button>
                     <Modal show={modalState} onHide={() => toggleModal}>
@@ -104,7 +104,9 @@ const CommentForm = (props) => {
                             </form>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button onClick={toggleModal}>Close</Button>
+                            <div className="reply-modal-button">
+                                <Button onClick={toggleModal}>Close</Button>
+                            </div>
                         </Modal.Footer>
                     </Modal>
                 </div>

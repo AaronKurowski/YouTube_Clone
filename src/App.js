@@ -4,7 +4,6 @@ import youtubeAPIKey from './APIKEY';
 import React, { Component } from 'react';
 import VideoPlayer from './components/VideoPlayer/videoPlayer';
 import Search from './components/SearchBar/searchBar.jsx';
-import Comments from './components/Comments/comments.jsx';
 import VideoList from './components/VideoList/videoList';
 import CommentForm from './components/Comments/commentForm.jsx';
 import './components/Comments/commentForm.css';

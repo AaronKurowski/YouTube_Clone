@@ -88,3 +88,11 @@ span.weak {
 .comment-inner-div {
     display: inline;
 }
+
+/* p {
+    border-bottom: 1px solid black;
+} */
+
+.reply-modal-button {
+    margin-bottom: 10px;
+}
