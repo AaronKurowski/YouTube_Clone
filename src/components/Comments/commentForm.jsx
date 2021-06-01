@@ -23,6 +23,8 @@ const CommentForm = (props) => {
 
     const handleSubmit = async (event) => {
         console.log(props.video)
+        console.log(props.comments)
+        debugger;
         event.preventDefault();
         newComment.content = commentText;
         newComment.date = getTodaysDate();
@@ -66,7 +68,7 @@ const CommentForm = (props) => {
     }
 
     return(
-        <div>
+        <div className="comment-inner-div">
             <div className="comment-form">
                 <p>Submit your comments here!</p>
                 <form onSubmit={event => handleSubmit(event)}>
@@ -76,17 +78,19 @@ const CommentForm = (props) => {
             </div>
             {props.comments.map((comment) => 
                 <div className="comments" id={comment.id}>
+                    <div className="comment-content">
+                    <div className="col comment-col" id={comment.id}>
+                        <div className="likes">Likes: {comment.like_count}</div>
+                        <button className="button" onClick={(e) => addLike(e, comment)}>like</button>
+                        <button className="button" onClick={(e) => addDislike(e, comment)}>dislike</button> 
+
+                    </div>
                     <div className="single-comment" id={comment.id}>
                         {hasReplies(comment)}
                         <br/>
                         <p><strong>{comment.content}</strong></p>
                     </div>
-                    <div className="col" id={comment.id}>
-                        <p>{comment.like_count}
-                        <button onClick={(e) => addLike(e, comment)}>like</button>
-                        <button onClick={(e) => addDislike(e, comment)}>dislike</button> </p>
-                    </div>
-                    
+                </div>
                 </div>
                 
             )}

@@ -19,10 +19,14 @@
   overflow: scroll;
   height: 100%;
   overflow-x: hidden;
-  display: flex;
-  align-items: right;
+  display: inline-block;
+  align-items: center;
 }
 
 .vid-list {
   margin-top: 16%;
+}
+
+.hidden {
+  visibility: hidden;
 }

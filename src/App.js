@@ -21,13 +21,15 @@ class App extends Component {
     selectedVideo: {},
     videoList: [],
     comments: [],
-    currentVideoComments: []
+    currentVideoComments: [],
+    hideComments: "comment-outer-div hidden"
   }
 
   getComments = async () => {
     let query = "http://127.0.0.1:8000/comments/"
     let comments = await axios.get(query)
     this.setState({comments: comments.data})
+    console.log(this.state.comments);
     debugger;
   }
   
@@ -47,6 +49,7 @@ class App extends Component {
   handleSelect = (video) => {
     this.setState({selectedVideo: video}, this.getSpecificComments);
     this.handleSubmit(video.snippet.title);
+    this.setState({hideComments: "comment-outer-div"});
   }
 
   getSpecificComments(){
@@ -69,7 +72,7 @@ class App extends Component {
 
             <VideoPlayer video={this.state.selectedVideo} />
             
-            <div className="comment-outer-div">
+            <div className={this.state.hideComments}>
               <CommentForm video={this.state.selectedVideo} comments={this.state.currentVideoComments} updateComments={(newComment) => this.updateComments(newComment)}/>
             </div>
           </div>

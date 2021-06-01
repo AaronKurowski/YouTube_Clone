@@ -48,3 +48,36 @@
 span.weak {
     font-weight: lighter;
 }
+
+.button {
+    background-color: green;
+    color: white;
+    display: inline;
+    margin: 4px 4px;
+    cursor: pointer;
+    height: 25px;
+}
+
+.comment-content {
+    border: 1px solid black;
+}
+
+.likes {
+    color:white;
+    background-color: black;
+    font-size: 20px;
+    width:100%;
+    text-align: center;
+}
+
+.comment-col {
+    text-align: center;
+    margin-top: 5px;
+    margin-right: 25%;
+    margin-left: 25%;
+    border-bottom: 1px solid black;
+}
+
+.comment-inner-div {
+    display: inline;
+}
