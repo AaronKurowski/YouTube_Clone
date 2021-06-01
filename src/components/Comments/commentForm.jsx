@@ -46,14 +46,22 @@ const CommentForm = (props) => {
         }
     }
 
-    const addLike = (event, comment) => {
-        console.log("like")
-        console.log(comment)
+    const addLike = async (event, comment) => {
+        try{
+            const result = await axios.put('http://127.0.0.1:8000/comments/' + comment.id + '?like=1');
+        }
+        catch (ex) {
+            console.log("error liking comment: " + ex);
+        }
     }
 
-    const addDislike = (event, comment) => {
-        console.log("dislike")
-        console.log(comment)
+    const addDislike = async (event, comment) => {
+        try{
+            const result = await axios.put('http://127.0.0.1:8000/comments/' + comment.id + '?dislike=1');
+        }
+        catch (ex) {
+            console.log("error disliking comment: " + ex);
+        }
     }
 
     return(
@@ -66,13 +74,13 @@ const CommentForm = (props) => {
                 </form>
             </div>
             {props.comments.map((comment) => 
-                <div className="comments">
+                <div className="comments" id={comment.id}>
                     <div className="single-comment" id={comment.id}>
                         {hasReplies(comment)}
                         <br/>
                         <p><strong>{comment.content}</strong></p>
                     </div>
-                    <div className="col">
+                    <div className="col" id={comment.id}>
                         <p>{comment.like_count}
                         <button onClick={(e) => addLike(e, comment)}>like</button>
                         <button onClick={(e) => addDislike(e, comment)}>dislike</button> </p>
