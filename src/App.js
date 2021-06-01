@@ -57,6 +57,16 @@ class App extends Component {
     this.setState({currentVideoComments: [...this.state.currentVideoComments, comment]});
   }
 
+  addLike(comment){
+    console.log("Like")
+    console.log(comment)
+  }
+
+  addDislike(comment){
+    console.log("disLike")
+    console.log(comment)
+  }
+
   render(){
     return(
       <div className="container-fluid"> 
@@ -68,7 +78,10 @@ class App extends Component {
               <VideoPlayer video={this.state.selectedVideo} />
             </div>
             <div className="comment-outer-div">
-              <CommentForm comments={this.state.currentVideoComments} updateComments={(newComment) => this.updateComments(newComment)}/>
+              <CommentForm comments={this.state.currentVideoComments} 
+              updateComments={(newComment) => this.updateComments(newComment)}
+              addLike={(comment) => this.addLike(comment)}
+              addDislike={(comment) => this.addDislike(comment)}/>
             </div>
           </div>
           

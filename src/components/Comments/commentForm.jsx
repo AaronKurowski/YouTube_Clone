@@ -46,6 +46,16 @@ const CommentForm = (props) => {
         }
     }
 
+    const addLike = (event, comment) => {
+        console.log("like")
+        console.log(comment)
+    }
+
+    const addDislike = (event, comment) => {
+        console.log("dislike")
+        console.log(comment)
+    }
+
     return(
         <div>
             <div className="comment-form">
@@ -62,7 +72,14 @@ const CommentForm = (props) => {
                         <br/>
                         <p><strong>{comment.content}</strong></p>
                     </div>
+                    <div className="col">
+                        <p>{comment.like_count}
+                        <button onClick={(e) => addLike(e, comment)}>like</button>
+                        <button onClick={(e) => addDislike(e, comment)}>dislike</button> </p>
+                    </div>
+                    
                 </div>
+                
             )}
             
         </div>
