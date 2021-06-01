@@ -22,10 +22,11 @@ const CommentForm = (props) => {
     }
 
     const handleSubmit = async (event) => {
+        console.log(props.video)
         event.preventDefault();
         newComment.content = commentText;
         newComment.date = getTodaysDate();
-        newComment.video_id = props.comments[0].video_id;
+        newComment.video_id = props.video.id.videoId;
         console.log(newComment)
         try{
             const result = await axios.post('http://127.0.0.1:8000/comments/', newComment)

@@ -26,8 +26,7 @@ const VideoPlayer = (props) => {
                 <div className="video-details-container">
                     <div className="video-details">
                         <h3>Jurassic Park Theme Song (Melodica Cover)</h3>
-                        <p>Just got a melodica. Here's my rendition of the Jurassic Park theme song. What do you think?
-                        </p>
+                        <p>Just got a melodica. Here's my rendition of the Jurassic Park theme song. What do you think?</p>
                     </div>
                 </div>
             </div>
