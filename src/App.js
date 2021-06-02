@@ -11,9 +11,7 @@ import './components/Comments/commentForm.css';
 class App extends Component {
   constructor(props){
     super(props);
-    debugger;
     this.getComments();
-    debugger;
   }
 
   state = {
@@ -28,8 +26,6 @@ class App extends Component {
     let query = "http://127.0.0.1:8000/comments/"
     let comments = await axios.get(query)
     this.setState({comments: comments.data})
-    console.log(this.state.comments);
-    debugger;
   }
   
   // this will trigger when a user submits a search in the search bar
@@ -62,17 +58,20 @@ class App extends Component {
     this.setState({currentVideoComments: [...this.state.currentVideoComments, comment]});
   }
 
+  updateLikeCount = () => {
+    this.getComments();
+    this.getSpecificComments();
+  }
+
   render(){
     return(
       <div className="container-fluid"> 
           <Search handleSearch={this.handleSubmit}/>
           <h1>Welcome to our Youtube Clone!</h1>
           <div className="content-body">
-
             <VideoPlayer video={this.state.selectedVideo} />
-            
             <div className={this.state.hideComments}>
-              <CommentForm video={this.state.selectedVideo} comments={this.state.currentVideoComments} updateComments={(newComment) => this.updateComments(newComment)}/>
+              <CommentForm video={this.state.selectedVideo} updateLikeCount={() => this.updateLikeCount()} comments={this.state.currentVideoComments} updateComments={(newComment) => this.updateComments(newComment)}/>
             </div>
           </div>
           <div className="vid-list">

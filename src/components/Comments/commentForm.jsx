@@ -2,6 +2,7 @@ import React, {useState}  from 'react';
 import axios from 'axios';
 import './commentForm.css';
 import {Button, Modal} from 'react-bootstrap';
+import { PersonPinCircleSharp } from '@material-ui/icons';
 
 const CommentForm = (props) => {
     const [commentText, setCommentText] = useState("");
@@ -26,17 +27,11 @@ const CommentForm = (props) => {
         "video_id": ""
     }
 
-
-
     const handleSubmit = async (event) => {
-        console.log(props.video)
-        console.log(props.comments)
-        debugger;
         event.preventDefault();
         newComment.content = commentText;
         newComment.date = getTodaysDate();
         newComment.video_id = props.video.id.videoId;
-        console.log(newComment)
         try{
             const result = await axios.post('http://127.0.0.1:8000/comments/', newComment)
             props.updateComments(newComment)
@@ -51,16 +46,8 @@ const CommentForm = (props) => {
         event.preventDefault();
         comment.replies = reply;
         setReply("");
-        // newComment.content = commentText;
-        // newComment.date = getTodaysDate();
-        // newComment.replies = reply;
-        debugger;
-        console.log(comment);
-        debugger;
         try{
             const reply = await axios.put(`http://127.0.0.1:8000/comments/${props.video.id.videoId}`, comment)
-            debugger;
-            console.log(reply);
         }
         catch(ex){
             console.log(`Error: ${ex}`)
@@ -78,8 +65,7 @@ const CommentForm = (props) => {
 
     const addLike = async (event, comment) => {
         try{
-            const result = await axios.put('http://127.0.0.1:8000/comments/' + comment.id + '?like=1');
-
+            const result = await axios.put(('http://127.0.0.1:8000/comments/' + comment.id + '?like=1'), props.updateLikeCount());
         }
         catch (ex) {
             console.log("error liking comment: " + ex);
@@ -88,7 +74,7 @@ const CommentForm = (props) => {
 
     const addDislike = async (event, comment) => {
         try{
-            const result = await axios.put('http://127.0.0.1:8000/comments/' + comment.id + '?dislike=1');
+            const result = await axios.put(('http://127.0.0.1:8000/comments/' + comment.id + '?dislike=1'), props.updateLikeCount());
         }
         catch (ex) {
             console.log("error disliking comment: " + ex);
@@ -107,37 +93,36 @@ const CommentForm = (props) => {
             {props.comments.map((comment) => 
                 <div className="comments" id={comment.id}>
                     <div className="comment-content">
-                    <div className="col comment-col" id={comment.id}>
-                        <div className="likes">Likes: {comment.like_count}</div>
-                        <button className="button" onClick={(e) => addLike(e, comment)}>Like</button>
-                        <button className="button" onClick={(e) => addDislike(e, comment)}>Dislike</button> 
-                    </div>
-                    <div className="single-comment" id={comment.id}>
-                        <p><strong>{comment.content}</strong></p>
-                        {hasReplies(comment)}
-                        <p>{comment.replies}</p>
-                    </div>
-                    <Button onClick={toggleModal}>Add Reply</Button>
-                    <Modal show={modalState} onHide={() => toggleModal}>
-                        <Modal.Header>Reply</Modal.Header>
-                        <Modal.Body>
-                            <form id={comment.id} onSubmit={event => replySubmit(event, comment)}>
-                                <label for="reply">Reply here:</label>
-                                <input onChange={event => setReply(event.target.value)} type="text" name="reply" id="reply" value={reply} />
+                        <div className="col comment-col" id={comment.id}>
+                            <div className="likes">Likes: {comment.like_count}</div>
+                            <button className="button" onClick={(e) => addLike(e, comment)}>Like</button>
+                            <button className="button" onClick={(e) => addDislike(e, comment)}>Dislike</button> 
+                        </div>
+                        <div className="single-comment" id={comment.id}>
+                            <p><strong>{comment.content}</strong></p>
+                            {hasReplies(comment)}
+                            <p>{comment.replies}</p>
+                        </div>
+                        <Button onClick={toggleModal}>Add Reply</Button>
+                        <Modal show={modalState} onHide={() => toggleModal}>
+                            <Modal.Header>Reply</Modal.Header>
+                            <Modal.Body>
+                                <form id={comment.id} onSubmit={event => replySubmit(event, comment)}>
+                                    <label for="reply">Reply here:</label>
+                                    <input onChange={event => setReply(event.target.value)} type="text" name="reply" id="reply" value={reply} />
 
-                                <button type="submit" value="Post" id={comment.id}>Post</button>
-                            </form>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <div className="reply-modal-button">
-                                <Button onClick={toggleModal}>Close</Button>
-                            </div>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
+                                    <button type="submit" value="Post" id={comment.id}>Post</button>
+                                </form>
+                            </Modal.Body>
+                            <Modal.Footer>
+                                <div className="reply-modal-button">
+                                    <Button onClick={toggleModal}>Close</Button>
+                                </div>
+                            </Modal.Footer>
+                        </Modal>
+                    </div>
                 </div>
             )}
-            
         </div>
     );
 }
